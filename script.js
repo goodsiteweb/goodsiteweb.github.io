@@ -31,10 +31,19 @@ downloadBtn.addEventListener('click', () => {
 });
 
 function downloadImage(dataUrl, fileName) {
-    let anchor = document.createElement('a');
-    anchor.href = dataUrl;
-    anchor.download = fileName;
-    anchor.click();
+    const link = document.createElement('a');
+    link.href = dataUrl;
+    link.download = fileName;
+
+    // Crée un événement de clic simulé
+    const clickEvent = new MouseEvent('click', {
+        view: window,
+        bubbles: true,
+        cancelable: false
+    });
+
+    // Déclenche l'événement de clic simulé
+    link.dispatchEvent(clickEvent);
 }
 
 
