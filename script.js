@@ -15,17 +15,28 @@ sizes.addEventListener('change',(e)=>{
     isEmptyInput();
 });
 
-downloadBtn.addEventListener('click', ()=>{
+downloadBtn.addEventListener('click', () => {
     let img = document.querySelector('.qr-body img');
 
-    if(img !== null){
+    if (img !== null) {
         let imgAtrr = img.getAttribute('src');
-        downloadBtn.setAttribute("href", imgAtrr);
-    }
-    else{
-        downloadBtn.setAttribute("href", `${document.querySelector('canvas').toDataURL()}`);
+        downloadImage(imgAtrr, 'QR_Code.png');
+    } else {
+        let canvas = document.querySelector('canvas');
+        if (canvas !== null) {
+            let canvasDataUrl = canvas.toDataURL();
+            downloadImage(canvasDataUrl, 'QR_Code.png');
+        }
     }
 });
+
+function downloadImage(dataUrl, fileName) {
+    let anchor = document.createElement('a');
+    anchor.href = dataUrl;
+    anchor.download = fileName;
+    anchor.click();
+}
+
 
 function isEmptyInput(){
     // if(qrText.value.length > 0){
