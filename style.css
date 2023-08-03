@@ -1,0 +1,336 @@
+#header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #E3F2FD;
+  z-index: 999;
+  position: sticky;
+  top: 0;
+  left: 0;
+}
+
+#navbar{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#navbar li{
+ list-style: none; 
+ padding: 0 20px;
+ position: relative;
+}
+
+#navbar li a{
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+  transition: 0.3s ease;
+}
+
+#navbar li a:hover,
+#navbar li a.active{
+  color: #088178;
+}
+
+#navbar li a.active::after,
+#navbar li a:hover::after{
+  content: "";
+  width: 30%;
+  height: 2px;
+  background: #088178;
+  position: absolute;
+  bottom: -4px;
+  left: 20px;
+}
+
+#mobile{
+  display: none;
+  align-items: center;
+}
+
+#close{
+  display: none;
+}
+
+/* Create Page */
+:root{
+  --bcg-color: #001122;
+  --primary-color: #088178;
+  --border-radius: 8px;
+  --secondary-color: #fff;
+  --border-color: #7fb7c9;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bcg-color);
+}
+
+.box{
+  background-color: var(--primary-color);
+  padding: 30px;
+  width: 400px;
+  border-radius: var(--border-radius);
+}
+
+.qr-header h1{
+  font-size: 26px;
+  text-align: center;
+  color: var(--secondary-color);
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+.qr-header input{
+  width: 100%;
+  margin-block: 12px;
+}
+
+.qr-header input, select{
+  padding: 8px;
+  border-radius: var(--border-radius);
+  font-size: 18px;
+  outline: none;
+  border: 2px solid var(--border-color);
+}
+
+.qr-header label{
+  color: var(--secondary-color);
+  font-size: 20px;
+}
+
+.qr-header div{
+  display: flex;
+  justify-content: space-between;
+}
+
+.qr-footer{
+  display: flex;
+  justify-content: center;
+}
+.qr-footer a{
+  background-color: var(--secondary-color);
+  text-decoration: none;
+  font-size: 20px;
+  padding: 14px 36px;
+  margin-inline: 2px;
+  color: var(--primary-color);
+  font-weight: 600;
+  border-radius: var(--border-radius);
+}
+
+.qr-body{
+  display: grid;
+  place-items: center;
+  padding:20px;
+}
+
+.qr-body img{
+  max-width: 100%;
+  max-height: 100%;
+  margin-block: 10px;
+  padding: 20px;
+  border: 0.5px solid var(--border-color);
+  border-radius: var(--border-radius);
+}
+
+@media screen and (max-width:520px){
+  .box{
+      width: 80%;
+  }
+  .qr-footer a{
+      padding: 12px;
+      font-size: 16px;
+  }
+}
+/* Scan page */
+
+body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 0 10px;
+  background: #E3F2FD;
+}
+.wrapper{
+  height: 270px;
+  width: 420px;
+  border-radius: 7px;
+  background: #088178;
+  padding: 30px 30px 35px;
+  transition: height 0.2s ease;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+.wrapper.active{
+  height: 525px;
+}
+.wrapper form{
+  height: 210px;
+  display: flex;
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+  border-radius: 7px;
+  background: #fff;
+  align-items: center;
+  justify-content: center;
+  transition: height 0.2s ease;
+}
+.wrapper.active form{
+  height: 225px;
+  pointer-events: none;
+}
+form img{
+  display: none;
+  max-width: 148px;
+}
+.wrapper.active form img{
+  display: block;
+}
+.wrapper.active form .content{
+  display: none;
+}
+form .content i{
+  color: #088178;
+  font-size: 55px;
+}
+form .content p{
+  color: #088178;
+  margin-top: 15px;
+  font-size: 16px;
+}
+.wrapper .details{
+  opacity: 0;
+  margin-top: 25px;
+  pointer-events: none;
+}
+.wrapper.active .details{
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.5s 0.05s ease;
+}
+.details textarea{
+  width: 100%;
+  height: 128px;
+  outline: none;
+  resize: none;
+  color: #fff;
+  font-size: 18px;
+  background: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  border: 1px solid #fff;
+}
+textarea::-webkit-scrollbar{
+  width: 0px;
+}
+textarea:hover::-webkit-scrollbar{
+  width: 5px;
+}
+textarea:hover::-webkit-scrollbar-track{
+  background: none;
+}
+textarea:hover::-webkit-scrollbar-thumb{
+  background: #fff;
+  border-radius: 8px;
+}
+.details .buttons{
+  display: flex;
+  margin-top: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+.buttons button{
+  height: 55px;
+  outline: none;
+  border: none;
+  font-weight: 500;
+  font-size: 16px;
+  cursor: pointer;
+  color: #088178;
+  border-radius: 5px;
+  background: #fff;
+  transition: transform 0.3s ease;
+  width: calc(100% / 2 - 10px);
+}
+.buttons button:active{
+  transform: scale(0.95);
+}
+@media (max-width: 450px) {
+  .wrapper{
+    padding: 25px;
+    height: 260px;
+  }
+  .wrapper.active{
+    height: 520px;
+  }
+}
+/* Styles de base pour tous les écrans */
+/* Ajoutez ici les styles qui doivent être communs à tous les écrans */
+
+/* Écrans de petite taille et plus grands */
+@media screen and (min-width: 600px) {
+  /* Ajustez les styles pour les écrans de petite taille et plus grands */
+  body {
+    font-size: 16px;
+  }
+  .box {
+    width: 80%;
+  }
+  /* Ajoutez des styles spécifiques pour les écrans de petite taille */
+}
+
+/* Écrans de taille moyenne et plus grands */
+@media screen and (min-width: 768px) {
+  /* Ajustez les styles pour les écrans de taille moyenne et plus grands */
+  body {
+    font-size: 18px;
+  }
+  .box {
+    width: 70%;
+  }
+  /* Ajoutez des styles spécifiques pour les écrans de taille moyenne */
+}
+
+/* Écrans de grande taille et plus grands */
+@media screen and (min-width: 992px) {
+  /* Ajustez les styles pour les écrans de grande taille et plus grands */
+  body {
+    font-size: 20px;
+  }
+  .box {
+    width: 60%;
+  }
+  /* Ajoutez des styles spécifiques pour les écrans de grande taille */
+}
+
+/* Écrans de très grande taille et plus grands */
+@media screen and (min-width: 1200px) {
+  /* Ajustez les styles pour les écrans de très grande taille et plus grands */
+  body {
+    font-size: 22px;
+  }
+  .box {
+    width: 50%;
+  }
+  /* Ajoutez des styles spécifiques pour les écrans de très grande taille */
+}
+
+
+
+
+
+
